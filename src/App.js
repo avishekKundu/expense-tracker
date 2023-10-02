@@ -1,8 +1,10 @@
 import './App.css';
+import ExpenseTracker from './inputForm';
 
 function App() {
   return (
     <>
+      <ExpenseTracker />
     </>
   );
 }
