@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './inputForm.css';
 
 const ExpenseTracker = () => {
     const [expenseList, setExpenseList] = useState([]);
@@ -36,78 +37,93 @@ const ExpenseTracker = () => {
 
     return (
         <>
-            <div className="container-fluid p-3 border border-dark border-2">
-                <div className="container p-3 border border-dark border-2 d-flex justify-content-center">
-                    <div class="card mr-2">
-                        <div class="card-body">
-                            <h5 class="card-title">ADD EXPENSE</h5>
-                            <div className="container-fluid p-3 inputContainer">
-                                <div className="mb-3 expenseName">
-                                    <input
-                                        className="border border-3 border-dark rounded-2"
-                                        type="text"
-                                        placeholder="Expense Name"
-                                        value={expense.name} onChange={(e) => setExpense({ ...expense, name: e.target.value })} />
+            <div className="main_content">
+                <div className="content_head">
+                    <center>EXPENSE TRACKER</center>
+                </div>
+                <div className="content_body">
+                    <div className="input_content">
+                        <div class="card card-head">
+                            <div class="card-body">
+                                <h5 class="card-title">ADD EXPENSE</h5>
+                                <div className="inputContainer">
+                                    <div className="expenseName">
+                                        <input
+                                            className="border border-3 border-dark rounded-2"
+                                            type="text"
+                                            placeholder="Expense Name"
+                                            value={expense.name} onChange={(e) => setExpense({ ...expense, name: e.target.value })} />
+                                    </div>
+                                    <div className="expenseAmount">
+                                        <input
+                                            className="border border-3 border-dark rounded-2"
+                                            type="number"
+                                            placeholder="Enter Amount"
+                                            value={expense.amount} onChange={(e) => setExpense({ ...expense, amount: e.target.value })} />
+                                    </div>
                                 </div>
-                                <div className="expenseAmount">
-                                    <input
-                                        className="border border-3 border-dark rounded-2"
-                                        type="number"
-                                        placeholder="Enter Amount"
-                                        value={expense.amount} onChange={(e) => setExpense({ ...expense, amount: e.target.value })} />
+                                <div className="btn_add">
+                                    <button class="btn btn-primary" onClick={addExpense}>ADD</button>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" onClick={addExpense}>ADD</button>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">SET BUDGET</h5>
-                            <div className="container-fluid p-3 inputContainer">
-                                <input
-                                    className="border border-3 border-dark rounded-2"
-                                    disabled={disabled}
-                                    type="number"
-                                    placeholder="Enter budget"
-                                    value={budget} onChange={(e) => setBudget(e.target.value)} />
+                        <div class="card card-head">
+                            <div class="card-body">
+                                <h5 class="card-title">SET BUDGET</h5>
+                                <div className="inputContainer">
+                                    <input
+                                        className="border border-3 border-dark rounded-2"
+                                        disabled={disabled}
+                                        type="number"
+                                        placeholder="Enter budget"
+                                        value={budget} onChange={(e) => setBudget(e.target.value)} />
+                                </div>
+                                <div className="btn_set">
+                                    <button class="btn btn-primary" onClick={addBudget}>SET</button>
+                                </div>
+                                <div className="notify_set">
+                                    {disabled && budget > 0 ? (
+                                        <>
+                                            <p className="displayBudget">Current Budget: 	&#8377;{budget}</p>
+                                        </>
+                                    ) : (
+                                        <></>
+                                    )}
+                                </div>
                             </div>
-                            <button class="btn btn-primary" onClick={addBudget}>SET</button>
-                            {disabled && budget > 0 ? (
-                                <>
-                                    <p className="displayBudget">Current Budget: 	&#8377;{budget}</p>
-                                </>
+                        </div>
+                        <div className="content_foot">
+                            <center>Total Expense: {totalExpense}</center>
+                            {totalExpense > totalBudget ? (
+                                <center className="exceedMessage">Budget Exceeded!</center>
+                            ) : (
+                                <></>
+                            )}
+                            {emptyField === '' ? (
+                                <center>Enter Budget!</center>
                             ) : (
                                 <></>
                             )}
                         </div>
                     </div>
-                </div>
-                <div className="container-fluid expenseListContainer">
-                    <ul className="list-group expense-list">
-                        {expenseList.map((expense, index) => (
-                            <li key={index} className="expenseLists">
-                                <div className="card p-2 listContainer">
-                                    <div className="card-body cardBody">
-                                        <p className="card-text expenseName"><span>Expense Name:</span> {expense.name}</p>
-                                        <p className="card-text expenseAmount"><span>Amount:</span> {expense.amount}</p>
-                                        <button onClick={() => removeExpense(index)} className="btn btn-danger border border-3 btnRemove">Delete</button>
+                    <div className="expenseListContainer">
+                        <ul className="list-group expense-list">
+                            {expenseList.map((expense, index) => (
+                                <li key={index} className="expenseLists">
+                                    <div className="card p-2 listContainer">
+                                        <div className="card-body cardBody">
+                                            <p className="card-text expenseName"><span>Expense Name:</span> {expense.name}</p>
+                                            <p className="card-text expenseAmount"><span>Amount:</span> {expense.amount}</p>
+                                            <div className="btnRemove">
+                                                <button onClick={() => removeExpense(index)} className="btn btn-danger border border-3">Delete</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-                <center className="totalExpense">Total Expense: {totalExpense}</center>
-                {totalExpense > totalBudget ? (
-                    <center className="exceedMessage">Budget Exceeded!</center>
-                ) : (
-                    <></>
-                )}
-                {emptyField === ''? (
-                    <center>Enter Budget!</center>
-                ) : (
-                    <></>
-                )}
             </div>
         </>
     )
