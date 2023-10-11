@@ -27,8 +27,10 @@ const ExpenseTracker = () => {
     }
 
     const addBudget = () => {
+        if(budget.trim() === '') return;
         setTotalBudget(totalBudget + Number.parseInt(budget));
         setDisabled(true);
+        setEmptyField();
     }
 
     const resetBudget = () => {
@@ -47,13 +49,6 @@ const ExpenseTracker = () => {
         <>
             <div className="main_content">
                 <div className="content_head">
-                    <div className="msg-exceed">
-                        {totalExpense > totalBudget ? (
-                            <p>Budget Exceeded!</p>
-                        ) : (
-                            <></>
-                        )}
-                    </div>
                     <div className="content_title">
                         <p>EXPENSE TRACKER</p>
                     </div>
@@ -83,7 +78,14 @@ const ExpenseTracker = () => {
                                     </div>
                                 </div>
                                 <div className="btn_add">
-                                    <button className="btn btn-primary" onClick={addExpense}>ADD</button>
+                                    <button className="btn btn-primary border border-2 border-dark add_btn" onClick={addExpense}>ADD</button>
+                                </div>
+                                <div className="content_foot">
+                                    {emptyField === '' ? (
+                                        <center>Enter Budget!</center>
+                                    ) : (
+                                        <></>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -99,11 +101,11 @@ const ExpenseTracker = () => {
                                         value={budget} onChange={(e) => setBudget(e.target.value)} />
                                 </div>
                                 <div className="btn_budget">
-                                    <div className="btn_set">
-                                        <button className="btn btn-primary" onClick={addBudget}>SET</button>
+                                    <div>
+                                        <button className="btn btn-primary border border-2 border-dark  btn_set" onClick={addBudget}>SET</button>
                                     </div>
-                                    <div className="btn_set mx-2">
-                                        <button className="btn btn-danger" onClick={resetBudget}>RESET</button>
+                                    <div className="mx-2">
+                                        <button className="btn btn-danger border border-2 border-dark  btn_set" onClick={resetBudget}>RESET</button>
                                     </div>
                                 </div>
                                 <div className="notify_set">
@@ -115,18 +117,18 @@ const ExpenseTracker = () => {
                                         <></>
                                     )}
                                 </div>
+                                <div className="msg-exceed">
+                                    {totalExpense > totalBudget ? (
+                                        <p>Budget Exceeded!</p>
+                                    ) : (
+                                        <></>
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                        <div className="content_foot">
-                            {emptyField === '' ? (
-                                <center>Enter Budget!</center>
-                            ) : (
-                                <></>
-                            )}
                         </div>
                     </div>
                     <div className="expenseListContainer">
-                        <ul className="list-group expense-list">
+                        <ul className="list-group" id="expense-list">
                             {expenseList.map((expense, index) => (
                                 <li key={index} className="expenseLists">
                                     <div className="card p-2 listContainer">
