@@ -136,7 +136,7 @@ const ExpenseTracker = () => {
                                             <p className="card-text expenseName"><span>Expense Name:</span> {expense.name}</p>
                                             <p className="card-text expenseAmount"><span>Amount:</span> {expense.amount}</p>
                                             <div className="btnRemove">
-                                                <FontAwesomeIcon onClick={() => removeExpense(index)} icon={faTrashCan} size="2x" style={{ color: "#eb051c", }} />
+                                                <FontAwesomeIcon onClick={() => removeExpense(index)} icon={faTrashCan} size="2x" style={{ color: "#eb051c", }} className="removeBtn" />
                                             </div>
                                         </div>
                                     </div>
