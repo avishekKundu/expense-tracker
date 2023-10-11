@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap');
 
 * {
@@ -21,16 +21,47 @@
 
 .content_head {
     color: white;
-    width: 50%;
-    min-width: 50vw;
-    max-width: 50%;
+    width: 90%;
+    min-width: 90vw;
+    max-width: 90%;
     margin: auto;
-    font-size: 50px;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding: 10px 0;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
     font-family: 'Barlow', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.msg-exceed {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    font-size: 22px;
+}
+
+.content_title {
+    width: 500px;
+    font-size: 42px;
+    display: flex;
+    justify-content: center;
+}
+
+.total-expense {
+    background-color: white;
+    color: black;
+    height: 50px;
+    width: 200px;
+    padding: 8px;
+    overflow: auto;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid;
+    border-radius: 8px;
 }
 
 .content_body {
@@ -40,8 +71,77 @@
     width: 95vw;
     margin: auto;
     display: flex;
-    justify-content: space-between;
-    padding: 10px 15px;
+    justify-content: flex-start;
+    padding: 10px 20px;
+}
+
+.input_content {
+    padding: 14px 20px;
+    width: 20%;
+    min-width: 20vw;
+    max-width: 20%;
+    display: grid;
+    row-gap: 3px;
+}
+
+.card-head {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+
+.card-headBudget {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    height: 195px !important;
+}
+
+.card-body {
+    display: grid;
+    row-gap: 3px;
+}
+
+.card-title {
+    padding: 2px 8px;
+    font-size: 22px;
+}
+
+.inputContainer {
+    padding: 3px 8px;
+    display: grid;
+    row-gap: 8px;
+}
+
+.inputExpense {
+    padding: 0px 8px;
+}
+
+.inputExpenseAmt,
+.inputBudgetAmt {
+    padding-left: 8px;
+    width: 180px;
+}
+
+.btn_add {
+    padding: 4px 8px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn_budget {
+    padding: 4px 8px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.notify_set {
+    height: 25px;
+    padding-left: 10px;
 }
 
 .body_input {
