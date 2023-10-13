@@ -27,7 +27,7 @@ const ExpenseTracker = () => {
     }
 
     const addBudget = () => {
-        if(budget.trim() === '') return;
+        if (budget.trim() === '') return;
         setTotalBudget(totalBudget + Number.parseInt(budget));
         setDisabled(true);
         setEmptyField();
@@ -40,7 +40,10 @@ const ExpenseTracker = () => {
 
     const removeExpense = (index) => {
         const updateList = [...expenseList];
-        setTotalExpense(totalExpense -= updateList[index].amount);
+        if (totalExpense > updateList[index].amount)
+            setTotalExpense(totalExpense -= updateList[index].amount);
+        else
+            setTotalExpense(totalExpense = updateList[index].amount - totalExpense);
         updateList.splice(index, 1);
         setExpenseList(updateList);
     }
