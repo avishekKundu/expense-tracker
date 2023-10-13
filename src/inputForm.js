@@ -74,6 +74,7 @@ const ExpenseTracker = () => {
                                             className="border border-3 border-dark rounded-2 inputExpenseAmt"
                                             type="number"
                                             placeholder="Enter Amount"
+                                            min={0}
                                             value={expense.amount} onChange={(e) => setExpense({ ...expense, amount: e.target.value })} />
                                     </div>
                                 </div>
@@ -98,6 +99,7 @@ const ExpenseTracker = () => {
                                         disabled={disabled}
                                         type="number"
                                         placeholder="Enter budget"
+                                        min={0}
                                         value={budget} onChange={(e) => setBudget(e.target.value)} />
                                 </div>
                                 <div className="btn_budget">
